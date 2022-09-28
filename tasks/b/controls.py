@@ -12,7 +12,7 @@
 - [c] количество четных букв ('a', 'e', 'i', 'o', 'u') в строке s
 """
 
-from tests.common.context import get_integer, get_string
+from test.common.context import get_integer, get_string
 
 x = get_integer()
 y = get_integer()

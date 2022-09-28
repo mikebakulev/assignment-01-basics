@@ -22,7 +22,7 @@
 в смысле type(результата) == float.
 """
 
-from tests.common.context import get_integer, get_float  # не обращайте внимание
+from test.common.context import get_integer, get_float  # не обращайте внимание
 
 x = get_integer()
 y = get_integer()
