@@ -8,7 +8,7 @@ if [[ "$dir" =~ ^assignment-[0-9]{2}-.*$ ]]; then
 else
   echo -e "${RED}Кажется, вы не находитесь в папке задания (assignment-XX-yyy-ваш-ник)${NC}"
   echo "Используйте команду cd, чтобы переместиться в нужную папку"
-  exit;
+  exit
 fi
 
 key_files=(~/.ssh/id_*)
@@ -24,16 +24,26 @@ if [ -e "${key_files[0]}" ]; then
 
   echo -e "${RED}Убедитесь, что папка '${dir}' имеет имя assignment-XX-yyy-ваш-ник${NC}"
   echo -e "${RED}Убедитесь, что '${upstream}' - это то же самое без вашего ника${NC}"
-  echo "Если это не так, остановите скрипт (Ctrl + C) и склонируйте репозиторий нормально"
-  # shellcheck disable=SC2162
-  read -p "Продолжить?... (Enter) "
+  echo "Если это не так, остановите скрипт и склонируйте репозиторий нормально"
+  while true; do
+    # shellcheck disable=SC2162
+    read -p "Продолжить? [yn] " yn
+    case $yn in
+    [yY]*) break ;;
+    [nN]*)
+      echo "Ok, перезапустите скрипт, если будете готовы :("
+      exit
+      ;;
+    *) echo "Ответьте y (yes) или n (no)" ;;
+    esac
+  done
 
-  change_to_ssh () {
+  change_to_ssh() {
     git remote set-url origin "git@github.com:ITMO-PhysTech-2022/${dir}"
     echo -e "${RED}Репозиторий origin перенастроен на доступ по SSH${NC}"
   }
 
-  rewrite_history () {
+  rewrite_history() {
     git checkout main
     git remote add upstream "git@github.com:ITMO-PhysTech-2022/${upstream}"
     git fetch --all
@@ -56,7 +66,7 @@ if [ -e "${key_files[0]}" ]; then
       break
       ;;
     [nN]*)
-      echo "Ok :("
+      echo "Ok, перезапустите скрипт, если будете готовы :("
       exit
       ;;
     *) echo "Ответьте y (yes) или n (no)" ;;
@@ -86,7 +96,7 @@ else
       break
       ;;
     [nN]*)
-      echo "Ok :("
+      echo "Ok, перезапустите скрипт, если будете готовы :("
       exit
       ;;
     *) echo "Ответьте y (yes) или n (no)" ;;
