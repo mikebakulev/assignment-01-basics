@@ -174,7 +174,7 @@ cd /c/Users/.../PycharmProjects/.../assignment-01-basics-ваш-ник
 
 Здесь чуть позже появится более подробный гайд, а пока что одно из двух:
 
-* `git pull --rebase upstream/main`
+* `git pull --rebase upstream main`
 * меню 'Git' &rightarrow; 'Branches', там кликнуть по `upstream/main` и выбрать 'Pull into \'текущая ветка\' Using
   Rebase'
 
