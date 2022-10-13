@@ -1,21 +1,16 @@
 def pytest_addoption(parser):
     parser.addoption(
-        '--step',
+        '--line',
         action='store',
         default=None,
-        help='Task step id or @ for \'everything\''
+        help='Output lines to check or None for \'everything\''
     )
 
 
 def pytest_generate_tests(metafunc):
-    if 'step' not in metafunc.fixturenames:
+    if 'line' not in metafunc.fixturenames:
         return
-    step = metafunc.config.getoption('step')
-    if step is not None:
-        step = int(step)
-    metafunc.parametrize('step', [step])
-
-
-def pytest_assertrepr_compare(op, left, right):
-    if isinstance(left, int) and isinstance(right, int):
-        return [f'Ожидалось, но не выполняется: {left} {op} {right}']
+    line = metafunc.config.getoption('line')
+    if line is not None:
+        line = int(line) - 1
+    metafunc.parametrize('line', [line])

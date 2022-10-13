@@ -11,21 +11,10 @@ from test.common.context import get_integer, get_float
 from test.common.modules import unload
 
 
-def pretest_noimport():
-    with mock_print():
-        import tasks.b.arithmetics
-    source = inspect.getsourcefile(tasks.b.arithmetics)
-    with open(source, 'r', encoding='utf-8') as f:
-        data = f.read()
-    words = re.sub(r'\s+', ' ', data)
-    if 'import math' in words or 'from math import' in words:
-        pytest.fail('Запрещено использовать модуль math')
-
-
 TEST_CASES = [
     (
-        10, 3, 0.5,
-        ['10 3 0.5', 13.5, 15.0, 5, 20.0, 20.0, 1, 1.7320508075688772, 109044078.609375, '0.50000']
+        10, 3, 'abacaba',
+        ['10 3 abacaba', 6, 6, 4]
     )
 ]
 
@@ -35,9 +24,8 @@ TEST_CASES = [
     TEST_CASES
 )
 def test_arithmetics(x, y, z, answers, line):
-    pretest_noimport()
     # noinspection PyUnboundLocalVariable
-    unload('tasks.b.arithmetics')
+    unload('tasks.b.controls')
 
     with mock(get_integer).returns_many(x, y), mock(get_float).returns(z), \
             mock_print() as output:
