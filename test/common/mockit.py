@@ -12,11 +12,6 @@ from io import StringIO
 _Whatever = object()
 
 
-class CompleteCallRedefinitionError(Exception):
-    def __init__(self, message: str):
-        super().__init__(message)
-
-
 class _Call:
     def __init__(self, args=_Whatever, kwargs=_Whatever, return_value=_Whatever):
         self.args: tuple | _Whatever = args
@@ -63,17 +58,12 @@ class _Patcher:
         self.complete_call = False
         return self
 
-    def then_returns(self, return_value=_Whatever):
-        if self.complete_call:
-            raise CompleteCallRedefinitionError(
-                f'Return value for call {len(self.calls) + 1} already specified')
+    def returns(self, return_value=_Whatever, *, skip_previous=False):
+        skip_previous = skip_previous or len(self.calls) == 0
+        if skip_previous or self.complete_call:
+            self.calls.append(_Call())
         self.calls[-1].return_value = return_value
         self.complete_call = True
-        return self
-
-    def returns(self, return_value):
-        self.complete_call = True
-        self.calls.append(_Call(return_value=return_value))
         return self
 
     def returns_many(self, *args):
