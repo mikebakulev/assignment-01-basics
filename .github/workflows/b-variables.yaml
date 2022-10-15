@@ -2,7 +2,7 @@ name: 'Test tasks/b/variables.py'
 
 on:
   pull_request:
-    types: [ opened, edited ]
+    types: [ opened, edited, synchronize ]
     paths:
       - 'tasks/b/variables.py'
       - 'test/b/test_variables.py'

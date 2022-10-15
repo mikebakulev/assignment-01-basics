@@ -2,7 +2,7 @@ name: 'Test tasks/b/arithmetics.py'
 
 on:
   pull_request:
-    types: [ opened, edited ]
+    types: [ opened, edited, synchronize ]
     paths:
       - 'tasks/b/arithmetics.py'
       - 'test/b/test_arithmetics.py'
