@@ -1,0 +1,25 @@
+name: 'Test tasks/b/controls.py'
+
+on:
+  pull_request:
+    types: [ opened, edited ]
+    paths:
+      - 'tasks/b/controls.py'
+      - 'test/b/test_controls.py'
+      - '.github/workflows/b-controls.yaml'
+  workflow_dispatch:
+
+jobs:
+  test-arithmetics:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        line: [ 1, 2, 3, 4 ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/b/test_controls.py --line ${{ matrix.line }}

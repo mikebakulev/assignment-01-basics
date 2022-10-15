@@ -1,0 +1,21 @@
+name: 'Test tasks/b/variables.py'
+
+on:
+  pull_request:
+    types: [ opened, edited ]
+    paths:
+      - 'tasks/b/variables.py'
+      - 'test/b/test_variables.py'
+      - '.github/workflows/b-variables.yaml'
+  workflow_dispatch:
+
+jobs:
+  test-arithmetics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/b/test_variables.py
