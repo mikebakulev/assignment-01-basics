@@ -16,7 +16,7 @@ def test_variables():
     assert float_var * float_var == 67
     assert str_var == '#just_a_hashtag'
 
-    result = results[0].split()
+    result = list(map(str.strip, results))
     ps = [p1, p2, p3, p4]
     values = [int_var, float_var, str_var]
     prods = []
