@@ -12,7 +12,7 @@ TEST_CASES = [
     ),
     (
         'Dark Cult Leader Name', 'The world will sink into darkness and despair!',
-        [1196, 'Dark Cult Leader Name The world will sink into darkness and despair!',
+        [966, 'Dark Cult Leader Name The world will sink into darkness and despair!',
          'Dark Cult Leader Name,\tThe world will sink into darkness and despair!',
          'Hello, Dark Cult Leader Name! Just wanted to say: \'The world will sink into darkness and despair!\'',
          'Dark The', 4, -1]
