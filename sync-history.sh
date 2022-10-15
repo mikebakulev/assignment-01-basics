@@ -48,9 +48,9 @@ if [ -e "${key_files[0]}" ]; then
     git remote add upstream "git@github.com:ITMO-PhysTech-2022/${upstream}"
     git fetch --all
     git reset --hard upstream/main ||
-      echo "${RED}Что-то пошло не так, перезапустите скрипт или напишите @doreshnikov${NC}"
+      echo -e "${RED}Что-то пошло не так, перезапустите скрипт или напишите @doreshnikov${NC}"
     git push --force origin main ||
-      echo "${RED}Что-то пошло не так, перезапустите скрипт или напишите @doreshnikov${NC}"
+      echo -e "${RED}Что-то пошло не так, перезапустите скрипт или напишите @doreshnikov${NC}"
     echo -e "${RED}Проверьте историю в вашем репозитории на GitHub${NC}"
     echo "Если что-то не так, пишите @doreshnikov"
   }
