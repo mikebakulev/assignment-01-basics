@@ -24,7 +24,7 @@ def test_variables():
         for j in range(i + 1):
             try:
                 prods.append(values[i] * values[j])
-            except ValueError:
+            except (ValueError, TypeError):
                 pass
 
     assert set(prods) == set(ps), 'Значения переменных p1, p2, p3, p4 неверные'
