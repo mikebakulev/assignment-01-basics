@@ -22,6 +22,7 @@ class _Call:
 class _Patcher:
     def __init__(self, spec):
         self.spec = spec
+        self.spec_name = f'{self.spec.__module__}.{self.spec.__name__}'
         self.sig = inspect.signature(spec)
         self.calls: list[_Call] = []
         self.complete_call = True
@@ -29,13 +30,11 @@ class _Patcher:
         self.mock_object = None
 
     @property
-    def spec_name(self):
-        return f'{self.spec.__module__}.{self.spec.__name__}'
-
-    @property
     def default_call(self):
         args, kwargs = [], {}
         for name, desc in self.sig.parameters.items():
+            if desc.default is not desc.empty:
+                continue
             if desc.kind in [Parameter.POSITIONAL_ONLY, Parameter.POSITIONAL_OR_KEYWORD]:
                 args.append(ANY)
             elif desc.kind == Parameter.KEYWORD_ONLY:
