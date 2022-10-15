@@ -1,0 +1,21 @@
+name: 'Test tasks/a/deepcopy.py'
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize ]
+    paths:
+      - 'tasks/a/deepcopy.py'
+      - 'test/a/test_deepcopy.py'
+      - '.github/workflows/a-deepcopy.yaml'
+  workflow_dispatch:
+
+jobs:
+  test-deepcopy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_deepcopy.py

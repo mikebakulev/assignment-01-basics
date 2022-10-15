@@ -1,0 +1,48 @@
+name: 'Test tasks/a/game.py'
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize ]
+    paths:
+      - 'tasks/a/game.py'
+      - 'test/a/test_game.py'
+      - '.github/workflows/a-game.yaml'
+  workflow_dispatch:
+
+jobs:
+  test-create-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_game.py::test_create_secret
+  test-score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_game.py::test_score
+  test-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_game.py::test_validate
+  test-play:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_game.py::test_play

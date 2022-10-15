@@ -1,0 +1,21 @@
+name: 'Test tasks/a/sieve.py'
+
+on:
+  pull_request:
+    types: [ opened, edited, synchronize ]
+    paths:
+      - 'tasks/a/sieve.py'
+      - 'test/a/test_sieve.py'
+      - '.github/workflows/a-sieve.yaml'
+  workflow_dispatch:
+
+jobs:
+  test-fizzbuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install pytest
+      - run: pytest test/a/test_sieve.py
