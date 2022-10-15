@@ -11,14 +11,16 @@ TEST_CASES = [
          'Hello, abacaba! Just wanted to say: \'abracadabra\'', 'abacaba abracadabra', 1, -1]
     ),
     (
-        'Dark Cult Leader Bolzhedor', 'The world will sink into darkness and despair!',
-        [1196, 'Dark Cult Leader Bolzhedor The world will sink into darkness and despair!',
-         'Hello, Dark Cult Leader Bolzhedor! Just wanted to say: \'The world will sink into darkness and despair!\'',
+        'Dark Cult Leader Name', 'The world will sink into darkness and despair!',
+        [1196, 'Dark Cult Leader Name The world will sink into darkness and despair!',
+         'Dark Cult Leader Name,\tThe world will sink into darkness and despair!',
+         'Hello, Dark Cult Leader Name! Just wanted to say: \'The world will sink into darkness and despair!\'',
          'Dark The', 4, -1]
     ),
     (
         'small string', 'big string containing small string and some other #$%',
         [636, 'small string big string containing small string and some other #$%',
+         'small string,\tbig string containing small string and some other #$%',
          'Hello, small string! Just wanted to say: \'big string containing small string and some other #$%\'',
          'small big', 2, 22]
     )
