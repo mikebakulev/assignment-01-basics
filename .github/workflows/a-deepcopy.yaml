@@ -12,6 +12,7 @@ on:
 jobs:
   test-deepcopy:
     runs-on: ubuntu-latest
+    timeout-minutes: 1
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
