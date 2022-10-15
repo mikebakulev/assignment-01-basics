@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-arithmetics:
+  test-strings:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
