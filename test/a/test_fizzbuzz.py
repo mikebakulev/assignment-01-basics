@@ -21,12 +21,13 @@ TEST_CASES = [
 )
 def test_fizzbuzz(a, b, answers):
     with mock_print() as output:
+        fizzbuzz(a, b)
         results = [line for line in output.getvalue().split('\n') if line.strip() != '']
 
     if len(results) != len(answers):
         pytest.fail(f'Выведено {len(results)} строк, ожидалось {len(answers)}')
     for i, (x, y) in enumerate(zip(results, answers)):
-        if x != y:
+        if x != str(y):
             pytest.fail(f'Неверный ответ на позиции {i + 1}:'
                         f'\n\t>ожидалось: {y}'
                         f'\n\t>выведено:  {x}')
