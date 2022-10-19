@@ -23,4 +23,4 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install pytest
-      - run: pytest test/b/test_data.py --line ${{ matrix.line }}
+      - run: pytest test/b/test_strings.py --line ${{ matrix.line }}
