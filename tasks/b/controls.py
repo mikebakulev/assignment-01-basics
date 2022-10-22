@@ -20,4 +20,16 @@ s = get_string()
 
 print(x, y, s)
 
+
 # Место для вашего кода
+print(abs(y - x ) - 1)
+k=0
+while x!=1:
+    if x%2==0:
+        x = x/2
+        k+=1
+    else :
+        x = 3*x+1
+        k+=1
+print(k)
+print(s.count('a') + s.count('e') + s.count('i') + s.count('o') + s.count('y') + s.count('u'))

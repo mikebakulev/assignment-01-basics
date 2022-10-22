@@ -27,9 +27,53 @@ from test.common.context import get_integer, get_float  # не обращайт�
 x = get_integer()
 y = get_integer()
 z = get_float()
-
 print(x, y, z)  # вывести три числа через пробел
 
 # Место для вашего кода
+# спасибо
+FLOATS = 0
 
-FLOATS = ...
+print(x + y + z)
+if (x + y + z)!=int(x + y + z):
+    FLOATS+=1
+    #print('-------')
+print(x * y * z)
+if (x * y * z)!= int(x * y * z):
+    FLOATS+=1
+    #print('-------')
+if int(x*z)==z*x:
+    print(int(x*z))
+    if (int(x * z) ) != int(int(x * z) ):
+        FLOATS += 1
+        # print('-------')
+else:
+    print(int(x * z) + 1)
+    if (int(x * z) + 1)!=int(int(x * z) + 1):
+        FLOATS+=1
+        #print('-------')
+print(x/z)
+if (x/z)!=int(x/z) :
+    FLOATS += 1
+    #print('-------')
+print(x//z)
+if (int(x//z))!= int(int(x//z)):
+    FLOATS +=1
+    #print('-------')
+print(x % y)
+if (x % y)!=int(x % y):
+    FLOATS+=1
+    #print('-------')
+print(y**z)
+if (y**z)!= int(y**z) :
+    FLOATS+=1
+    #print('-------')
+print(((x+y)*(x+z)*(z+y))**3)
+if (((x+y)*(x+z)*(z+y))**3)!=int(((x+y)*(x+z)*(z+y))**3):
+    FLOATS+=1
+    #print('-------')
+print(('{:.5f}'.format(z)))
+if (float('{:.5f}'.format(z)))!= int(float('{:.5f}'.format(z))):
+    FLOATS+=1
+    #print('-------')
+print(FLOATS)
+
