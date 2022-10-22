@@ -22,10 +22,41 @@
 from test.common.context import get_integer
 
 n = get_integer()
-a = ...
+a = []
 
 # Место для вашего кода (заполнение массива)
-
+for i in range(n):
+    a.append(get_integer())
 print(a)
 
 # Место для вашего кода
+# спс бро
+
+if n%2==0:
+    print(a[0],a[n//2-1], a[n-1])
+else:
+    print(a[0],a[n//2], a[n-1])
+maxim=0
+minim=10000000000
+sum=0
+b=[]
+
+for i in range(n):
+    sum+=a[i]
+    maxim = max(a[i],maxim)
+    minim = min(a[i],minim)
+    if a[i]%2==0:
+        b.append(a[i]**2)
+for i in range(n):
+    if a[i]==minim:
+        poz_min = i
+        break
+
+print(minim,maxim)
+print(sum)
+print(b)
+print(poz_min)
+c=a[::-1]
+print(c)
+d=a[::2]
+print(d)

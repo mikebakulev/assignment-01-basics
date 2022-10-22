@@ -12,5 +12,11 @@
 """
 
 # Место для вашего кода
-
+int_var = 4
+float_var = 67**0.5
+str_var = '#just_a_hashtag'
+p1= int_var*float_var
+p2 = int_var*str_var
+p3 = int_var*int_var
+p4 = float_var*float_var
 print(p1, p2, p3, p4, sep='\n')
