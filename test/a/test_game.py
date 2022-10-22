@@ -16,22 +16,23 @@ from test.common.mockit import mock, mock_print
     ]
 )
 def test_create_secret(n):
-    secret = create_secret(n)
-    if len(secret) != n:
-        pytest.fail(f'Секретное слово неверного размера: '
-                    f'\n\t>ожидалось:  длины {n}'
-                    f'\n\t>возвращено: {secret} длины {len(secret)}')
-
     s = set()
     for i in range(n):
-        s.add(create_secret(n))
+        secret = create_secret(n)
+        if len(secret) != n:
+            pytest.fail(f'Секретное слово неверного размера: '
+                        f'\n\t>ожидалось:  длины {n}'
+                        f'\n\t>возвращено: {secret} длины {len(secret)}')
+        if not secret.isnumeric():
+            pytest.fail(f'Ожидалась строка из цифр, возвращена {secret}')
+        s.add(secret)
     if len(s) < n // 2:
         pytest.fail('Генерируемые строки повторяются')
 
     for i in range(1000):
         s.add(create_secret(n))
     for pos in range(n):
-        digits = {w[pos] for w in s}
+        digits = {int(w[pos]) for w in s}
         if len(digits) != 10:
             pytest.fail(f'Цифры {set(range(10)) - digits} не появляются на позиции {pos + 1}')
 
